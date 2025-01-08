@@ -1,7 +1,54 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
   text-align: center;
+}
+
+.chatroom-display {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 30px;
+  margin: 1px 0;
+  background-color: #454545;
+  width: 100vw;
+  height: 100px;
+}
+
+.chatroom-display p {
+  margin-right: auto;
+}
+
+.chatroom-display i {
+  margin-left: 30px;
+}
+
+.chatroom-display i, .chatroom-display p {
+  font-size: 2rem;
+}
+
+.chatroom-display button {
+  margin-right: 30px;
+  width: 200px;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:active {
+  border: 1px solid white;
+}
+
+.chatrooms {
+  margin: 50px 0;
+}
+
+h1 {
+  text-align: center;
+}
+
+.room-name-input {
+  width: 400px;
+  height: 30px;
+  margin-right: 20px;
 }
 
