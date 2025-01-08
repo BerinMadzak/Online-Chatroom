@@ -1,5 +1,5 @@
-import './App.css'
-import ChatroomDisplay from './components/ChatroomDisplay'
+import '../App.css'
+import ChatroomDisplay from '../components/ChatroomDisplay'
 
 function App() {
   return (

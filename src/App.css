@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+body {
+  align-items: flex-start;
+}
+
 .chatroom-display {
   display: flex;
   justify-content: flex-start;
@@ -52,3 +56,38 @@ h1 {
   margin-right: 20px;
 }
 
+.chatroom-page {
+  display: flex;
+  gap: 10px;
+  width: 100vw;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.chatroom {
+  height: 80vh;
+  width: 60vw;
+  background-color: #454545;
+}
+
+.message-form {
+  display: flex;
+  gap: 10px;
+  width: 60vw;
+}
+
+.message-form input {
+  width: 90%;
+}
+
+.message-form button {
+  width: 10%;
+}
+
+.home-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 1.2rem;
+}
