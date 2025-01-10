@@ -1,5 +1,5 @@
 import { auth, provider } from '../config/firebase'
-import { signInWithPopup } from 'firebase/auth';
+import { signInWithPopup } from 'firebase/auth'
 
 export default function SignIn()
 {

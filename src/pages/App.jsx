@@ -2,7 +2,7 @@ import '../App.css'
 import ChatroomDisplay from '../components/ChatroomDisplay'
 import { auth } from '../config/firebase';
 import SignIn from './SignIn'
-import { useAuthState } from "react-firebase-hooks/auth";
+import { useAuthState } from "react-firebase-hooks/auth"
 import { signOut } from 'firebase/auth';
 
 function App() {
