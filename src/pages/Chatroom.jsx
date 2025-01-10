@@ -13,7 +13,7 @@ export default function Chatroom()
 
     const messageLimit = 30;
     const messages = collection(db, name);
-    const result = query(messages, orderBy('time'), limit(messageLimit));
+    const result = query(messages, orderBy('time', 'desc'), limit(messageLimit));
 
     const [messageList] = useCollectionData(result, {idField: 'id'});
 
@@ -42,7 +42,7 @@ export default function Chatroom()
             <button className="home-button"><i className="fa-solid fa-home"></i></button>
             <h1>{name}</h1>
             <div className="chatroom">
-                {messageList && messageList.map((message, index) => <Message message={message} key={index}/>)}
+                {messageList && messageList.reverse().map((message, index) => <Message message={message} key={index}/>)}
                 <div ref={endPoint}></div>
             </div>
             <form className="message-form" onSubmit={sendMessage}>

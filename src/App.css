@@ -86,6 +86,10 @@ h1 {
   width: 90%;
 }
 
+.message-form input:focus {
+  outline: none;
+}
+
 .message-form button {
   width: 10%;
 }
