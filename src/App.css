@@ -66,15 +66,20 @@ h1 {
 }
 
 .chatroom {
-  height: 80vh;
+  height: 75vh;
   width: 60vw;
   background-color: #454545;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: scroll;
 }
 
 .message-form {
   display: flex;
   gap: 10px;
-  width: 60vw;
+  width: calc(60vw + 40px);
 }
 
 .message-form input {
@@ -115,4 +120,35 @@ h1 {
   position: absolute;
   left: 0;
   margin-left: 20px;
+}
+
+.message {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.message-content {
+  display: flex;
+  flex-direction: column;
+  height: 80px;
+}
+
+.username, .message-text {
+  margin: 0;
+  text-align: left;
+}
+
+.username {
+  font-size: 1.4rem;
+}
+
+.profile-picture {
+  border-radius: 90px;
+  height: 80px;
+  width: auto;
+}
+
+.message-text {
+
 }

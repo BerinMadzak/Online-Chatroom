@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom"
 import { auth, db } from "../config/firebase"
 import {useCollectionData} from "react-firebase-hooks/firestore"
@@ -9,12 +9,17 @@ export default function Chatroom()
 {
     const { name } = useParams();
     const [input, setInput] = useState('');
+    const endPoint = useRef();
 
     const messageLimit = 30;
     const messages = collection(db, name);
     const result = query(messages, orderBy('time'), limit(messageLimit));
 
     const [messageList] = useCollectionData(result, {idField: 'id'});
+
+    useEffect(()=>{
+        if(endPoint) endPoint.current.scrollIntoView({behavior: 'smooth'});
+    });
 
     const sendMessage = async(e) => {
         e.preventDefault();
@@ -37,7 +42,8 @@ export default function Chatroom()
             <button className="home-button"><i className="fa-solid fa-home"></i></button>
             <h1>{name}</h1>
             <div className="chatroom">
-                {messageList && messageList.map((message) => <Message message={message} key={message.uid}/>)}
+                {messageList && messageList.map((message, index) => <Message message={message} key={index}/>)}
+                <div ref={endPoint}></div>
             </div>
             <form className="message-form" onSubmit={sendMessage}>
                 <input type="text" value={input} onChange={(e) => setInput(e.target.value)}/>

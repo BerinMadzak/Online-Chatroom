@@ -2,10 +2,12 @@ export default function Message({message})
 {
     const { text, photoURL, username, uid } = message;
     return (
-        <div>
+        <div className="message">
             <img className="profile-picture" src={photoURL} alt={username + " profile picture"} />
-            <p className="username">{username}</p>
-            <p className="message">{text}</p>
+            <div className="message-content">
+                <p className="username">{username}</p>
+                <p className="message-text">{text}</p>
+            </div>
         </div>
     );
 }
