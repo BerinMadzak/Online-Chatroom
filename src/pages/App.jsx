@@ -4,12 +4,21 @@ import { auth } from '../config/firebase';
 import SignIn from './SignIn'
 import { useAuthState } from "react-firebase-hooks/auth"
 import { signOut } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
 function App() {
   const [user] = useAuthState(auth);
+  const input = document.querySelector(".room-name-input");
+  const navigate = useNavigate();
 
   const signUserOut = async () => {
     await signOut(auth);
+  }
+
+  const joinChatroom = () => {
+    const name = input.value;
+    input.value = "";
+    navigate(`/${name.toLowerCase()}`);
   }
 
   if(!user) return <SignIn />
@@ -25,7 +34,7 @@ function App() {
           <ChatroomDisplay name="Movies" icon="fa-film"/>
           <ChatroomDisplay name="Games" icon="fa-gamepad"/>
         </div>
-        <form action="">
+        <form onSubmit={joinChatroom}>
           <input className='room-name-input' type="text" />
           <button type="submit">Join Room</button>
         </form>
