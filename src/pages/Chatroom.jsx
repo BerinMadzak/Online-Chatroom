@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom"
 import { auth, db } from "../config/firebase"
-import {useCollectionData} from "react-firebase-hooks/firestore"
+import {useCollection, useCollectionData} from "react-firebase-hooks/firestore"
 import Message from "../components/Message";
-import { collection, serverTimestamp, query, orderBy, limit, addDoc } from 'firebase/firestore';
+import { collection, serverTimestamp, query, orderBy, limit, addDoc, doc, deleteDoc } from 'firebase/firestore';
 
 export default function Chatroom()
 {
@@ -16,7 +16,7 @@ export default function Chatroom()
     const messages = collection(db, name);
     const result = query(messages, orderBy('time', 'desc'), limit(messageLimit));
 
-    const [messageList] = useCollectionData(result, {idField: 'id'});
+    const [messageList] = useCollection(result);
 
     useEffect(()=> {
         if(endPoint) endPoint.current.scrollIntoView();
@@ -38,12 +38,23 @@ export default function Chatroom()
         setInput('');
     }
 
+    const deleteMessage = async (id) => {
+        try {
+            const docRef = doc(db, name, id);
+            await deleteDoc(docRef); 
+        } catch(error) {
+            console.error("Error deleting message: ", error);
+        }
+    }
+
     return (
         <div className="chatroom-page">
             <button className="home-button" onClick={() => navigate('/')}><i className="fa-solid fa-home"></i></button>
             <h1>{name}</h1>
             <div className="chatroom">
-                {messageList && messageList.reverse().map((message, index) => <Message message={message} key={index}/>)}
+                {messageList?.docs && messageList.docs.reverse().map(
+                    (message, index) => <Message message={message} deleteMessage={deleteMessage} key={message.id}/>)
+                }
                 <div ref={endPoint}></div>
             </div>
             <form className="message-form" onSubmit={sendMessage}>

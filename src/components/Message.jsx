@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { auth } from "../config/firebase";
+import { deleteDoc } from "firebase/firestore";
 
-export default function Message({message})
+export default function Message({message, deleteMessage})
 {
-    const { text, photoURL, username, time } = message;
+    const { text, photoURL, username, time, uid } = message.data();
     const [imageLoaded, setImageLoaded] = useState(null);
 
     const messageTime = time ? time.toDate().toLocaleString('en-US', {
@@ -19,6 +21,10 @@ export default function Message({message})
         setImageLoaded(false);
     }
 
+    const handleDelete = async () => {
+        deleteMessage(message.id);
+    }
+
     return (
         <div className="flex flex-top">
             <img className="profile-picture" src={imageLoaded ? photoURL : '/profile-picture-fallback.jpg'} 
@@ -32,6 +38,7 @@ export default function Message({message})
                 </div>
                 <p className="message-text">{text}</p>
             </div>
+            {uid === auth.currentUser.uid && <i className="fa-solid fa-trash trash" onClick={handleDelete}></i>}
         </div>
     );
 }
