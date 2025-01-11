@@ -5,11 +5,11 @@ export default function Message({message})
     const { text, photoURL, username, time } = message;
     const [imageLoaded, setImageLoaded] = useState(false);
 
-    const messageTime = time.toDate().toLocaleString('en-US', {
+    const messageTime = time ? time.toDate().toLocaleString('en-US', {
         day: 'numeric', 
         month: 'short',
         year: 'numeric'
-    });
+    }) : null;
 
     const handleLoadSuccess = () => {
         setImageLoaded(true);
