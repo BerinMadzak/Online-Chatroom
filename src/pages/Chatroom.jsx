@@ -18,9 +18,9 @@ export default function Chatroom()
 
     const [messageList] = useCollectionData(result, {idField: 'id'});
 
-    useEffect(()=>{
-        if(endPoint) endPoint.current.scrollIntoView({behavior: 'smooth'});
-    });
+    useEffect(()=> {
+        if(endPoint) endPoint.current.scrollIntoView();
+    }, [messageList]);
 
     const sendMessage = async(e) => {
         e.preventDefault();
