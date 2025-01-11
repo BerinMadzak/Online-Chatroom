@@ -3,7 +3,7 @@ import { useState } from "react";
 export default function Message({message})
 {
     const { text, photoURL, username, time } = message;
-    const [imageLoaded, setImageLoaded] = useState(false);
+    const [imageLoaded, setImageLoaded] = useState(null);
 
     const messageTime = time ? time.toDate().toLocaleString('en-US', {
         day: 'numeric', 
@@ -12,7 +12,7 @@ export default function Message({message})
     }) : null;
 
     const handleLoadSuccess = () => {
-        setImageLoaded(true);
+        if(imageLoaded === null) setImageLoaded(true);
     }
 
     const handleLoadFail = () => {
