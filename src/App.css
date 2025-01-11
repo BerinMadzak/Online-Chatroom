@@ -126,16 +126,21 @@ h1 {
   margin-left: 20px;
 }
 
-.message {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-
 .message-content {
   display: flex;
   flex-direction: column;
-  height: 80px;
+  height: fit-content;
+  flex: auto;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.flex-top {
+  align-items: flex-start;
 }
 
 .username, .message-text {
@@ -145,6 +150,11 @@ h1 {
 
 .username {
   font-size: 1.4rem;
+}
+
+.date {
+  font-size: 1rem;
+  color: #AAAAAA;
 }
 
 .profile-picture {

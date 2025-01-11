@@ -2,8 +2,14 @@ import { useState } from "react";
 
 export default function Message({message})
 {
-    const { text, photoURL, username, uid } = message;
+    const { text, photoURL, username, time } = message;
     const [imageLoaded, setImageLoaded] = useState(false);
+
+    const messageTime = time.toDate().toLocaleString('en-US', {
+        day: 'numeric', 
+        month: 'short',
+        year: 'numeric'
+    });
 
     const handleLoadSuccess = () => {
         setImageLoaded(true);
@@ -14,13 +20,16 @@ export default function Message({message})
     }
 
     return (
-        <div className="message">
+        <div className="flex flex-top">
             <img className="profile-picture" src={imageLoaded ? photoURL : '/profile-picture-fallback.jpg'} 
                 alt={username + " profile picture"} 
                 onLoad={handleLoadSuccess} onError={handleLoadFail}
             />
             <div className="message-content">
-                <p className="username">{username}</p>
+                <div className="flex">
+                    <p className="username">{username}</p>
+                    <p className="date">{messageTime}</p>
+                </div>
                 <p className="message-text">{text}</p>
             </div>
         </div>
