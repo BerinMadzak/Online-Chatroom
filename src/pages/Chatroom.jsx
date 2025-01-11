@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { auth, db } from "../config/firebase"
 import {useCollectionData} from "react-firebase-hooks/firestore"
 import Message from "../components/Message";
@@ -10,6 +10,7 @@ export default function Chatroom()
     const { name } = useParams();
     const [input, setInput] = useState('');
     const endPoint = useRef();
+    const navigate = useNavigate();
 
     const messageLimit = 30;
     const messages = collection(db, name);
@@ -39,7 +40,7 @@ export default function Chatroom()
 
     return (
         <div className="chatroom-page">
-            <button className="home-button"><i className="fa-solid fa-home"></i></button>
+            <button className="home-button" onClick={() => navigate('/')}><i className="fa-solid fa-home"></i></button>
             <h1>{name}</h1>
             <div className="chatroom">
                 {messageList && messageList.reverse().map((message, index) => <Message message={message} key={index}/>)}

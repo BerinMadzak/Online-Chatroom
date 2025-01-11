@@ -38,7 +38,7 @@ function App() {
           <input className='room-name-input' type="text" />
           <button type="submit">Join Room</button>
         </form>
-        <button onClick={signUserOut}>Sign Out</button>
+        <button className='sign-out-button' onClick={signUserOut}>Sign Out</button>
       </div>
     </>
   )
