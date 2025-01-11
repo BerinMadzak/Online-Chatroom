@@ -171,3 +171,7 @@ h1 {
 .trash {
   align-self: center;
 }
+
+.trash:hover {
+  transform: scale(1.5);
+}
