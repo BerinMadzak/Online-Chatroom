@@ -1,5 +1,6 @@
 #root {
   text-align: center;
+  width: 100%;
 }
 
 body {
@@ -14,7 +15,7 @@ body {
   margin: 1px 0;
   background-color: #454545;
   width: 100vw;
-  height: 100px;
+  height: 12vh;
 }
 
 .chatroom-display p {
@@ -48,6 +49,7 @@ button:active {
 
 h1 {
   text-align: center;
+  width: 100%;
 }
 
 .room-name-input {
@@ -165,7 +167,7 @@ h1 {
 
 .sign-out-button {
   width: 300px;
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 .trash {
@@ -174,4 +176,62 @@ h1 {
 
 .trash:hover {
   transform: scale(1.5);
+}
+
+@media (max-width: 600px) {
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .chatroom-display {
+    height: 10vh;
+  }
+
+  .chatroom-display button {
+    width: 100px;
+  }
+
+  .chatroom-display i, .chatroom-display p {
+    font-size: 1.5rem;
+  }
+
+  .room-name-input {
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+
+  .sign-out-button {
+    margin-top: 30px;
+  }
+
+  .message-form button {
+    font-size: 0.7rem;
+    display: flex;
+    justify-content: center;
+    width: 20%;
+  }
+
+  .profile-picture {
+    width: 40px;
+    height: auto;
+  }
+
+  .username {
+    font-size: 0.8rem;
+  }
+
+  .date {
+    font-size: 0.6rem;
+  }
+
+  .message-text {
+    font-size: 0.6rem;
+  }
+
+  .trash {
+    font-size: 0.8rem;
+  }
+
 }
