@@ -234,4 +234,8 @@ h1 {
     font-size: 0.8rem;
   }
 
+  .sign-in button {
+    font-size: 1.4rem;
+    padding-left: 50px;
+  }
 }
